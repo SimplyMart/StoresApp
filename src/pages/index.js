@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.scss';
+import Logo from '../component/Logo';
 import { Typography, Button } from 'antd';
 
 const { Title, Text } = Typography;
@@ -12,10 +13,7 @@ export default function Home() {
         <title>Home Page</title>
       </Head>
       <section className={styles.main}>
-        <div id={styles.Logo}>
-          <img src="/images/logo-illus.png" alt="logo" />
-          <img src="/images/logo-title.png" alt="title" />
-        </div>
+        <Logo />
         <div className={styles.content}>
           <p>
             Lorem ipsum dolor sit ametidsm consectetur adipisicing elit.
