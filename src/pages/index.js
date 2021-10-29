@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.scss';
+import LoginModal from '../component/LoginModal/LoginModal';
+import styles from '../styles/Home.module.scss'; 
 
 export default function Home() {
   return (
@@ -7,6 +8,9 @@ export default function Home() {
       <Head>
         <title>Home Page</title>
       </Head>
+      <div>
+        <LoginModal />
+      </div>
     </div>
   );
 }
