@@ -1,0 +1,71 @@
+.Logo {
+  display: flex;
+  height: 90px;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  & > img:first-child {
+    height: 100%;
+    margin-right: 20px;
+  }
+  & > img:nth-child(2) {
+    height: 70%;
+  }
+}
+
+.homePage {
+  display: flex;
+  height: 100vh;
+  min-height: 100vh;
+
+  .main {
+    width: 45%;
+    height: 100%;
+    padding: 90px 2% 0 8%;
+
+    .content {
+      margin-top: 20vh;
+
+      & > p:first-child {
+        font-size: 2rem;
+        line-height: 2.6rem;
+        font-weight: 500;
+        font-style: italic;
+      }
+      .authBtns {
+        display: flex;
+
+        & > button {
+          height: auto;
+          margin-right: 30px;
+          padding: 8px 30px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .heroSection {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 70%;
+      border: none;
+    }
+  }
+}
