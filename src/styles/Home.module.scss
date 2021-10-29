@@ -1,8 +1,9 @@
 .Logo {
   display: flex;
-  height: 70px;
+  height: 90px;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
 
   & > img:first-child {
     height: 100%;
