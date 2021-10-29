@@ -33,16 +33,6 @@
         font-weight: 500;
         font-style: italic;
       }
-      .authBtns {
-        display: flex;
-
-        & > button {
-          height: auto;
-          margin-right: 30px;
-          padding: 8px 30px;
-          border-radius: 4px;
-        }
-      }
     }
   }
 
