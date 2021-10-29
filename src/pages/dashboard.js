@@ -1,5 +1,5 @@
 import styles from '../styles/Dashboard.module.scss';
-import Drawer from '../component/Drawer';
+import Drawer from '../component/Dashboard/Drawer';
 
 export default function Dashboard() {
   return (

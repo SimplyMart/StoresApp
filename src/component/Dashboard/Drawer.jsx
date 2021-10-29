@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styles from '../styles/component/Drawer.module.scss';
-import Logo from './Logo';
+import styles from '../../styles/component/Drawer.module.scss';
+import Logo from '../Logo';
 import { Button } from 'antd';
 import {
   MoneyCollectOutlined,

@@ -1,8 +1,7 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
-import Logo from "../component/Logo";
-import LoginModal from "../component/LoginModal/LoginModal";
-import { Button } from "antd";
+import Head from 'next/head';
+import styles from '../styles/Home.module.scss';
+import Logo from '../component/Logo';
+import LoginModal from '../component/LoginModal/LoginModal';
 
 export default function Home() {
   return (
