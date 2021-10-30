@@ -25,11 +25,11 @@ const ProductCard = ({ name, price, stock, id }) => {
           </p>
         </div>
         <div className={styles.editButton}>
-          <div className={styles.edit} style={{ boxShadow: 'none' }}>
-            <EditItem />
+          <div className={styles.edit} style={{ boxShadow: "none" }}>
+            <EditItem data={{ name, price, stock }} />
           </div>
-          <div className={styles.delete} style={{ boxShadow: 'none' }}>
-            <DeleteItem />
+          <div className={styles.delete} style={{ boxShadow: "none" }}>
+            <DeleteItem data={{ name, price, stock }} />
           </div>
         </div>
       </div>

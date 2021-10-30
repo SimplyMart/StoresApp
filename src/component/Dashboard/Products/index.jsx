@@ -7,86 +7,86 @@ import { Typography } from 'antd';
 const Items = [
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
 
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips fndjvdbjdsjvfdz fefersfefe',
+    name: "Chips fndjvdbjdsjvfdz fefersfefe",
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: 'Chips',
+    name: "Chips",
     price: 20,
     stock: 20,
   },
@@ -105,8 +105,8 @@ const Products = ({ selectedNav, setSelectedNav }) => {
     <div
       className="site-card-wrapper"
       style={{
-        height: '100%',
-        width: '100%',
+        height: "100%",
+        width: "100%",
       }}
     >
       <div className={styles.Products}>
