@@ -1,4 +1,3 @@
-import { Card, Col, Row, Button } from "antd";
 import styles from "../../styles/component/Product.module.scss";
 import { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
@@ -118,44 +117,6 @@ const Products = () => {
           </div>
           <div></div>
         </div>
-        {/* <div className={styles.cardContainer}>
-          <Row gutter={16}>
-            <Col span={8}>
-              <Card
-                hoverable
-                style={{ width: 240 }}
-                cover={
-                  <img
-                    alt="example"
-                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                  />
-                }
-              >
-                <p>Name</p>
-                <p>MRP:</p>
-                <p>Stock:</p>
-                <div>
-                  <Button type="primary" success>
-                    Edit
-                  </Button>
-                  <Button type="primary" danger>
-                    Delete
-                  </Button>
-                </div>
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="Card title" bordered={false}>
-                Card content
-              </Card>
-            </Col>
-            <Col span={8}>
-              <Card title="Card title" bordered={false}>
-                Card content
-              </Card>
-            </Col>
-          </Row>
-        </div> */}
         <div className={styles.cardContainer}>
           {items.map((item, index) => (
             <ProductCard key={index} index={index % 3} {...item} />
