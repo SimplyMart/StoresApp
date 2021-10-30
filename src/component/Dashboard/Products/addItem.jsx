@@ -1,11 +1,16 @@
-import styles from '../../../styles/component/addItem.module.scss';
-import { Typography, Upload, Divider, Form, Input, Button } from 'antd';
-import { useState } from 'react';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import styles from "../../../styles/component/addItem.module.scss";
+import { Typography, Upload, Divider, Form, Input, Button } from "antd";
+import { useState } from "react";
+import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 const { Title } = Typography;
 
 export default function AddProductItem() {
   const [form] = Form.useForm();
+  const [itemInfo, setItemInfo] = useState({
+    itemName: "",
+    price: "",
+    stock: "",
+  });
   const [uploadState, setUploadState] = useState({
     loading: false,
     file: null,
@@ -16,23 +21,23 @@ export default function AddProductItem() {
   };
 
   function beforeUpload(file) {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
     if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file!');
+      message.error("You can only upload JPG/PNG file!");
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+      message.error("Image must smaller than 2MB!");
     }
     return isJpgOrPng && isLt2M;
   }
 
   const handleUploadChange = (info) => {
-    if (info.file.status === 'uploading') {
+    if (info.file.status === "uploading") {
       setUploadState({ loading: true });
       return;
     }
-    if (info.file.status === 'done') {
+    if (info.file.status === "done") {
       // Get this url from response in real world.
       const file = info.file.originFileObj;
       Object.assign(file, { preview: window.URL.createObjectURL(file) });
@@ -50,6 +55,17 @@ export default function AddProductItem() {
     </div>
   );
 
+  const handleFormFields = (e) => {
+    setItemInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    const { itemName, price, stock } = itemInfo;
+    console.log(itemInfo);
+  };
+
   return (
     <div className={styles.additem}>
       <div className={styles.newItemIllus}>
@@ -60,7 +76,7 @@ export default function AddProductItem() {
         <Divider />
       </Title>
       <div className={styles.addItemForm}>
-        <Form form={form} layout="vertical">
+        <Form form={form} layout="vertical" onSubmit={handleFormSubmit}>
           <Upload
             name="avatar"
             listType="picture-card"
@@ -73,7 +89,7 @@ export default function AddProductItem() {
               <img
                 src={uploadState.file.preview}
                 alt="avatar"
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
               />
             ) : (
               uploadButton
@@ -82,6 +98,9 @@ export default function AddProductItem() {
           <Form.Item
             className={styles.formInput}
             label="Product Name"
+            name="name"
+            value={itemInfo.itemName}
+            onChange={handleFormFields}
             rules={[
               {
                 required: true,
@@ -93,6 +112,9 @@ export default function AddProductItem() {
           <Form.Item
             className={styles.formInput}
             label="Price"
+            name="price"
+            value={itemInfo.price}
+            onChange={handleFormFields}
             rules={[
               {
                 required: true,
@@ -104,6 +126,9 @@ export default function AddProductItem() {
           <Form.Item
             className={styles.formInput}
             label="Stock"
+            name="stock"
+            value={itemInfo.stock}
+            onChange={handleFormFields}
             rules={[
               {
                 required: true,
