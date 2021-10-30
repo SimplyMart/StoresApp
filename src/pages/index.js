@@ -1,7 +1,7 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
-import Logo from "../component/Logo";
-import LoginModal from "../component/LoginModal/LoginModal";
+import Head from 'next/head';
+import styles from '../styles/Home.module.scss';
+import Logo from '../component/Logo';
+import LoginModal from '../component/LoginModal/LoginModal';
 
 export default function Home() {
   return (
@@ -12,10 +12,7 @@ export default function Home() {
       <section className={styles.main}>
         <Logo />
         <div className={styles.content}>
-          <p>
-            Lorem ipsum dolor sit ametidsm consectetur adipisicing elit.
-            Voluptatem, maxime.
-          </p>
+          <p>We bring you the fastest and the smartest shopping experience!</p>
           <LoginModal />
         </div>
       </section>

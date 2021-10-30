@@ -1,6 +1,7 @@
-import { Modal, Button } from "antd";
-import { useState } from "react";
-import styles from "../../styles/component/editItem.module.scss";
+import { Modal, Button } from 'antd';
+import { useState } from 'react';
+import styles from '../../../styles/component/editItem.module.scss';
+
 const EditItem = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {

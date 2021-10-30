@@ -20,18 +20,18 @@
   min-height: 100vh;
 
   .main {
-    width: 45%;
+    width: 40%;
     height: 100%;
     padding: 90px 2% 0 8%;
 
     .content {
-      margin-top: 20vh;
+      margin-top: 18vh;
 
       & > p:first-child {
         font-size: 2rem;
         line-height: 2.6rem;
         font-weight: 500;
-        font-style: italic;
+        // font-style: italic;
       }
     }
   }

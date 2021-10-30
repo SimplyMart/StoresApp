@@ -6,6 +6,7 @@ import {
   OrderedListOutlined,
   LogoutOutlined,
   QrcodeOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import { useAuth } from '../../utils/context/AuthUserContext';
 
@@ -16,7 +17,8 @@ export default function Drawer({ selectedNav, setSelectedNav }) {
     { id: 0, name: 'Payments', icon: <MoneyCollectOutlined /> },
     { id: 1, name: 'Products', icon: <OrderedListOutlined /> },
     { id: 2, name: 'QR Code', icon: <QrcodeOutlined /> },
-    { id: 3, name: 'Logout', icon: <LogoutOutlined />, onClick: signout },
+    { id: 3, name: 'Profile', icon: <UserOutlined /> },
+    { id: 10, name: 'Logout', icon: <LogoutOutlined />, onClick: signout },
   ];
 
   const handleNav = (e) => {

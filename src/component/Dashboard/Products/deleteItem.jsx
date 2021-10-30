@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Space } from "antd";
-import styles from "../../styles/component/deleteItem.module.scss";
+import styles from "../../../styles/component/deleteItem.module.scss";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;

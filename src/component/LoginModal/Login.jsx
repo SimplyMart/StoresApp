@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from '../../styles/LoginModal.module.scss';
-import { GooglePlusOutlined } from '@ant-design/icons';
+import { GoogleOutlined } from '@ant-design/icons';
 import { signInWithGoogle, auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
@@ -46,36 +46,35 @@ const Login = () => {
               signInWithGoogle();
             }}
           >
-            <GooglePlusOutlined />
+            <span>Sign In with&ensp;</span>
+            <GoogleOutlined />
           </button>
         </div>
-        <div className={styles.loginForm}>
-          <form onSubmit={submitSignIn}>
-            <div className={styles.formGroup}>
-              <label htmlFor="username">Email</label>
-              <input
-                type="email"
-                name="Email"
-                value={loginUser.Email}
-                onChange={handleLoginChange}
-                placeholder="Email"
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="Password"
-                value={loginUser.Password}
-                onChange={handleLoginChange}
-                placeholder="password"
-              />
-            </div>
-            <div className={styles.btn}>
-              <button>Login</button>
-            </div>
-          </form>
-        </div>
+        <form className={styles.loginForm} onSubmit={submitSignIn}>
+          <div className={styles.formGroup}>
+            <label htmlFor="username">Email</label>
+            <input
+              type="email"
+              name="Email"
+              value={loginUser.Email}
+              onChange={handleLoginChange}
+              placeholder="Enter email"
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="Password"
+              value={loginUser.Password}
+              onChange={handleLoginChange}
+              placeholder="Enter password"
+            />
+          </div>
+          <div className={styles.btn}>
+            <button>Login</button>
+          </div>
+        </form>
       </div>
     </div>
   );

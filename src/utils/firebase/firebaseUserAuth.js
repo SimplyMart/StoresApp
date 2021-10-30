@@ -27,6 +27,7 @@ export function FirebaseAuth() {
   };
 
   const signout = () => {
+    setLoading(true);
     signOut(auth)
       .then(() => {
         router.push('/');
@@ -34,6 +35,8 @@ export function FirebaseAuth() {
       .catch((error) => {
         console.log(error.message);
       });
+    setAuthUser(null);
+    setLoading(false);
   };
 
   // listen for Firebase state change

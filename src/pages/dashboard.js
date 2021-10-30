@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../styles/Dashboard.module.scss';
 import Drawer from '../component/Dashboard/Drawer';
 import Payments from '../component/Dashboard/Payments';
 import Products from '../component/Dashboard/Products';
+import Profile from '../component/Dashboard/Profile';
+import AddProductItem from '../component/Dashboard/Products/addItem';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import QRcode from '../component/Dashboard/QRcode';
 import { useAuth } from '../utils/context/AuthUserContext';
 
@@ -15,8 +17,15 @@ export default function Dashboard() {
 
   const navComponents = [
     { id: 0, component: <Payments /> },
-    { id: 1, component: <Products /> },
+    {
+      id: 1,
+      component: (
+        <Products selectedNav={selectedNav} setSelectedNav={setSelectedNav} />
+      ),
+    },
     { id: 2, component: <QRcode /> },
+    { id: 3, component: <Profile /> },
+    { id: 4, component: <AddProductItem /> },
   ];
 
   if (loading) {

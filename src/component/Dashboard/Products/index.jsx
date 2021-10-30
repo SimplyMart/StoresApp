@@ -1,6 +1,6 @@
-import styles from '../../styles/component/Product.module.scss';
+import styles from '../../../styles/component/Product.module.scss';
 import { useState } from 'react';
-import ProductCard from '../ProductCard';
+import ProductCard from './ProductCard';
 import { doc, getDoc } from 'firebase/firestore';
 import { Typography } from 'antd';
 
@@ -94,8 +94,12 @@ const Items = [
 
 const { Title } = Typography;
 
-const Products = () => {
+const Products = ({ selectedNav, setSelectedNav }) => {
   const [items, setItems] = useState(Items);
+
+  const handleAddItem = () => {
+    setSelectedNav(4);
+  };
 
   return (
     <div
@@ -120,10 +124,13 @@ const Products = () => {
             </div>
           </div>
         </div>
-        <div className={styles.cardContainer}>
-          {items.map((item, index) => (
-            <ProductCard key={index} index={index % 3} {...item} />
-          ))}
+        <div className={styles.prodMain}>
+          <button onClick={handleAddItem}>Add an item</button>
+          <div className={styles.cardContainer}>
+            {items.map((item, index) => (
+              <ProductCard key={index} index={index % 3} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
