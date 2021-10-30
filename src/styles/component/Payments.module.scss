@@ -1,0 +1,89 @@
+.Payments {
+  padding: 4rem 7%;
+
+  .payHead {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      width: 50%;
+
+      & > h2 {
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      & > p {
+        color: grey;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    .illus {
+      width: 30%;
+      margin-right: 40px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .headDivider {
+    margin: 2rem 0;
+  }
+
+  .PaymentCard {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: -5px 5px 16px #00000022;
+    padding: 40px 6% 50px;
+
+    .time {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+
+    .details {
+      margin-top: 2rem;
+
+      & > h5 {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
+
+        & > span {
+          font-weight: 400;
+        }
+      }
+    }
+
+    .cardEnd {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 50px;
+
+      button {
+        text-transform: uppercase;
+        padding: {
+          top: 8px;
+          bottom: 8px;
+        }
+        letter-spacing: 1px;
+      }
+
+      & > h3 {
+        font-size: 1.7rem;
+        font-weight: 400;
+        & > span {
+          font-weight: 600;
+
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

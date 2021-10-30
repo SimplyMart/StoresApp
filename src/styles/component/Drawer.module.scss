@@ -1,5 +1,7 @@
+@import '../Dashboard.module.scss';
+
 .Drawer {
-  width: 21%;
+  width: calc(100% - #{$dashMainWidth});
   height: 100vh;
   box-shadow: 2px 0px 25px 0px #0000002a;
   display: flex;
@@ -8,6 +10,7 @@
   .drawerLogo {
     height: 70px;
     margin: 40px auto;
+    padding: 0 5%;
   }
 
   .drawerNav {
@@ -24,7 +27,7 @@
       text-align: start;
 
       & > span {
-        font-size: 1.45rem;
+        font-size: 1.4rem;
       }
 
       & > span:first-child {

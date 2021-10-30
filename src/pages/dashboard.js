@@ -27,7 +27,6 @@ export default function Dashboard() {
   }
   return (
     <div className={styles.Dashboard}>
-      {/* Width 21% */}
       <Drawer selectedNav={selectedNav} setSelectedNav={setSelectedNav} />
       <div className={styles.dashMain}>
         {navComponents[selectedNav].component}
