@@ -4,9 +4,11 @@ import { db, auth } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import { useAuth } from '../../utils/context/AuthUserContext';
 
 const Register = () => {
   const router = useRouter();
+  const { updateStoreID } = useAuth();
   const [signUpUser, setSignUpUser] = useState({
     Name: '',
     Email: '',
@@ -20,9 +22,9 @@ const Register = () => {
       [name]: value,
     }));
   };
+
   const submitSignUp = async (event) => {
     event.preventDefault();
-
     const { Name, Email, Password } = signUpUser;
 
     try {
@@ -30,11 +32,18 @@ const Register = () => {
         .then(async (result) => {
           console.log(result);
           const user = result.user;
-          const adminRef = collection(db, 'admin');
-          await setDoc(doc(adminRef, user.uid), {
+          await setDoc(doc(collection(db, 'store'), user.uid), {
+            storeName: '',
+            ownerName: '',
+            addressName: '',
+            phoneNumber: null,
+          });
+          await setDoc(doc(collection(db, 'admin'), user.uid), {
             name: Name,
             email: Email,
+            storeId: user.uid,
           });
+          updateStoreID(user.uid);
         })
         .then(() => {
           console.log('Success. New user created in Firebase');

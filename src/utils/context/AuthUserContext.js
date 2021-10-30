@@ -3,7 +3,9 @@ import { FirebaseAuth } from '../firebase';
 
 const AuthUserContext = createContext({
   authUser: null,
+  storeId: null,
   loading: true,
+  updateStoreId: async () => {},
   signout: async () => {},
 });
 

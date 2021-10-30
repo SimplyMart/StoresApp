@@ -18,7 +18,7 @@ const LoginModal = () => {
       return;
     }
     setIsModalVisible(true);
-  };
+  };  
 
   const handleOk = () => {
     setIsModalVisible(false);

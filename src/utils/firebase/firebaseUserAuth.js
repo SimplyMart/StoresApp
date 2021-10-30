@@ -12,6 +12,7 @@ export function FirebaseAuth() {
   const router = useRouter();
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [storeId, setStoreId] = useState(null);
 
   const authStateChanged = async (authState) => {
     if (!authState) {
@@ -24,6 +25,10 @@ export function FirebaseAuth() {
     const formattedUser = formatAuthUser(authState);
     setAuthUser(formattedUser);
     setLoading(false);
+  };
+
+  const updateStoreId = async (id) => {
+    setStoreId(id);
   };
 
   const signout = () => {
@@ -49,5 +54,7 @@ export function FirebaseAuth() {
     authUser,
     loading,
     signout,
+    storeId,
+    updateStoreId,
   };
 }
