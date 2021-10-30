@@ -65,7 +65,7 @@ export default function PaymentCard({ details }) {
           Number of Items: <span>{items.length}</span>
         </Title>
         <Title level={5}>
-          Means of Payment: <span>{paymentType}</span>
+          Customer Phone Number: <span>{paymentType}</span>
         </Title>
       </div>
       <div className={styles.cardEnd}>

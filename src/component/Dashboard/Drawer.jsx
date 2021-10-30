@@ -18,7 +18,13 @@ export default function Drawer({ selectedNav, setSelectedNav }) {
     { id: 1, name: 'Products', icon: <OrderedListOutlined /> },
     { id: 2, name: 'QR Code', icon: <QrcodeOutlined /> },
     { id: 3, name: 'Profile', icon: <UserOutlined /> },
-    { id: 10, name: 'Logout', icon: <LogoutOutlined />, onClick: signout },
+    {
+      id: 10,
+      name: 'Logout',
+      icon: <LogoutOutlined style={{ color: 'red' }} />,
+      onClick: signout,
+      styles: { color: 'red' },
+    },
   ];
 
   const handleNav = (e) => {
@@ -38,6 +44,7 @@ export default function Drawer({ selectedNav, setSelectedNav }) {
             }`}
             data-id={nav.id}
             onClick={nav.onClick || handleNav}
+            style={nav.styles}
           >
             {nav.icon}
             <span>{nav.name}</span>
