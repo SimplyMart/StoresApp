@@ -1,7 +1,7 @@
 .Products {
   width: 100%;
-  padding: 2% 5%;
-// overflow: hidden;
+  padding: 2% 3%;
+  // overflow: hidden;
   .productHeader {
     height: 22rem;
     .row {
@@ -25,9 +25,6 @@
           font-size: 18px;
         }
       }
-      .productSvg {
-        margin-left: 20%;
-      }
       .productLogo {
         height: 100%;
       }
@@ -38,7 +35,7 @@
     margin-top: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-flow: wrap;
     align-items: center;
   }

@@ -1,90 +1,91 @@
-import styles from "../../styles/component/Product.module.scss";
-import { useState } from "react";
-import ProductCard from "../ProductCard/ProductCard";
+import styles from '../../styles/component/Product.module.scss';
+import { useState } from 'react';
+import ProductCard from '../ProductCard';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Items = [
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
 
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips fndjvdbjdsjvfdz",
+    name: 'Chips fndjvdbjdsjvfdz fefersfefe',
     price: 20,
     stock: 20,
   },
   {
     id: 1,
-    name: "Chips",
+    name: 'Chips',
     price: 20,
     stock: 20,
   },
@@ -92,12 +93,13 @@ const Items = [
 
 const Products = () => {
   const [items, setItems] = useState(Items);
+
   return (
     <div
       className="site-card-wrapper"
       style={{
-        height: "100%",
-        width: "100%",
+        height: '100%',
+        width: '100%',
       }}
     >
       <div className={styles.Products}>
@@ -106,7 +108,6 @@ const Products = () => {
             <div className={styles.heading}>
               <h1>Products</h1>
               <p>
-                {" "}
                 Browse through your shop. We provide you the facility to add new
                 item, delete an exisiting item and edit the product details
               </p>
@@ -115,7 +116,6 @@ const Products = () => {
               <img src="/images/product.png" className={styles.productLogo} />
             </div>
           </div>
-          <div></div>
         </div>
         <div className={styles.cardContainer}>
           {items.map((item, index) => (
