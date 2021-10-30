@@ -5,7 +5,7 @@ import styles from '../../../styles/component/Payments.module.scss';
 const { Title } = Typography;
 
 export default function PaymentCard({ details }) {
-  const { username, items, purchasedOn, cost, paymentType } = details;
+  const { username, items, purchasedOn, cost, phoneNumber } = details;
   const [view, toggleView] = useState(false);
 
   const itemColumns = [
@@ -65,7 +65,7 @@ export default function PaymentCard({ details }) {
           Number of Items: <span>{items.length}</span>
         </Title>
         <Title level={5}>
-          Customer Phone Number: <span>{paymentType}</span>
+          Customer Phone Number: <span>{phoneNumber}</span>
         </Title>
       </div>
       <div className={styles.cardEnd}>

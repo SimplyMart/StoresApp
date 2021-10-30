@@ -23,7 +23,7 @@ export default function Drawer({ selectedNav, setSelectedNav }) {
       name: 'Logout',
       icon: <LogoutOutlined style={{ color: 'red' }} />,
       onClick: signout,
-      styles: { color: 'red' },
+      styles: { color: 'red', marginTop: 50 },
     },
   ];
 

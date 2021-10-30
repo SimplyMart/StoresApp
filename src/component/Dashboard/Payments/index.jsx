@@ -19,7 +19,7 @@ export default function Payments() {
         ],
         cost: 2504,
         purchasedOn: new Date(),
-        paymentType: 'PayTM',
+        phoneNumber: '1213142121',
       },
     },
     {
@@ -82,7 +82,7 @@ export default function Payments() {
         ],
         cost: 8012,
         purchasedOn: new Date(),
-        paymentType: 'PayTM',
+        phoneNumber: '1213142121',
       },
     },
   ];
