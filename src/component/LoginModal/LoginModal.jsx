@@ -1,8 +1,8 @@
-import { useState } from "react";
-import styles from "../../styles/LoginModal.module.scss";
-import { Modal, Button } from "antd";
-import Register from "./Register";
-import Login from "./Login";
+import { useState } from 'react';
+import styles from '../../styles/LoginModal.module.scss';
+import { Modal, Button } from 'antd';
+import Register from './Register';
+import Login from './Login';
 
 const LoginModal = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -21,7 +21,7 @@ const LoginModal = () => {
 
   return (
     <div className={styles.authBtns}>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" className="normalBtn" onClick={showModal}>
         Get Started
       </Button>
       <Modal
@@ -33,9 +33,9 @@ const LoginModal = () => {
         {toggleLogin ? <Login /> : <Register />}
         <div className={styles.switchUser}>
           <p>
-            {toggleLogin ? "New User?" : "Existing User?"}
+            {toggleLogin ? 'New User?' : 'Existing User?'}
             <span onClick={() => setToggleLogin(!toggleLogin)}>
-              {toggleLogin ? " Register" : " Login"}
+              {toggleLogin ? ' Register' : ' Login'}
             </span>
           </p>
         </div>

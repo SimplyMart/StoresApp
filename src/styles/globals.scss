@@ -16,4 +16,11 @@ a {
 * {
   box-sizing: border-box;
 }
-@import url("antd/dist/antd.css");
+
+.normalBtn {
+  height: auto;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
