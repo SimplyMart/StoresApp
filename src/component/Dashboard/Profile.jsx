@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from '../../styles/component/Profile.module.scss';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Typography, Form, Input, Button, Upload, message } from 'antd';
+import { Typography, Input, Button, Upload, message } from 'antd';
 import { updateDoc, doc, getDoc } from '@firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { db, storage } from '../../utils/firebase';
