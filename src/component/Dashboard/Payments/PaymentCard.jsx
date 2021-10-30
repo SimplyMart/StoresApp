@@ -1,8 +1,47 @@
-import { Button, Typography } from 'antd';
+import { useState } from 'react';
+import { Button, Divider, Typography, Table } from 'antd';
 import styles from '../../../styles/component/Payments.module.scss';
+
+const { Title } = Typography;
 
 export default function PaymentCard({ details }) {
   const { username, items, purchasedOn, cost, paymentType } = details;
+  const [view, toggleView] = useState(false);
+
+  const itemColumns = [
+    {
+      title: 'S. No.',
+      dataIndex: 'id',
+      key: 'id',
+      render: (text) => <a>{text + 1}</a>,
+    },
+    {
+      title: 'Item Name',
+      dataIndex: 'itemname',
+      key: 'itemname',
+    },
+    {
+      title: 'Quantity',
+      dataIndex: 'quantity',
+      key: 'quantity',
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      render: (text) => <a>{text}/-</a>,
+    },
+    {
+      title: 'Cost',
+      dataIndex: 'cost',
+      key: 'cost',
+      render: (text) => <a>{text}/-</a>,
+    },
+  ];
+
+  const viewItems = () => {
+    toggleView(!view);
+  };
 
   return (
     <div className={styles.PaymentCard}>
@@ -18,22 +57,30 @@ export default function PaymentCard({ details }) {
           timeZone: 'IST',
         })}
       </p>
-      <Typography.Title level={3}>{username}</Typography.Title>
+      <Title level={3} className={styles.user}>
+        {username}
+      </Title>
       <div className={styles.details}>
-        <Typography.Title level={5}>
+        <Title level={5}>
           Number of Items: <span>{items.length}</span>
-        </Typography.Title>
-        <Typography.Title level={5}>
+        </Title>
+        <Title level={5}>
           Means of Payment: <span>{paymentType}</span>
-        </Typography.Title>
+        </Title>
       </div>
       <div className={styles.cardEnd}>
-        <Button type="primary" className="normalBtn">
+        <Button type="primary" className="normalBtn" onClick={viewItems}>
           View Items
         </Button>
-        <Typography.Title level={3}>
-          MRP: <span>{cost}/-</span>
-        </Typography.Title>
+        <Title level={3}>
+          Total Amount: <span>&#8377; {cost}/-</span>
+        </Title>
+      </div>
+      <div className={styles.itemContainer}>
+        <div className={`${styles.innerContainer} ${view && styles.display}`}>
+          <Divider className={styles.containerDivider} />
+          <Table columns={itemColumns} dataSource={items} />
+        </div>
       </div>
     </div>
   );

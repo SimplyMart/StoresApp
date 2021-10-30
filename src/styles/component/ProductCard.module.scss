@@ -1,12 +1,13 @@
 .ProductCard {
-  font-family: Poppins;
+  font-family: 'Poppins';
   padding: 0% 2%;
   margin-bottom: 14%;
+  width: 33%;
   .card {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     background: #fff;
-    height: 600px;
+    height: 580px;
     display: flex;
     flex-direction: column;
     transition: 0.3s;
@@ -16,7 +17,6 @@
       padding-top: -10% !important;
     }
     img {
-      height: 90%;
       width: 98%;
       margin: auto;
     }

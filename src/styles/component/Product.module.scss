@@ -1,10 +1,9 @@
 .Products {
-  padding: 2% 7%;
-  height: 100%;
-  width: 90%;
-  overflow: hidden;
+  width: 100%;
+  padding: 2% 5%;
+// overflow: hidden;
   .productHeader {
-    height: 6%;
+    height: 22rem;
     .row {
       display: flex;
       flex-direction: row;
@@ -35,10 +34,11 @@
     }
   }
   .cardContainer {
+    width: 100%;
     margin-top: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-flow: wrap;
     align-items: center;
   }

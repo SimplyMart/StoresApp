@@ -3,7 +3,7 @@ $dashMainWidth: 78%;
 .Dashboard {
   display: flex;
   max-height: 100vh;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   .dashMain {
     width: $dashMainWidth;

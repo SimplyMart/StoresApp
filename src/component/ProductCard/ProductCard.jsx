@@ -1,5 +1,5 @@
-import { Card, Divider, Button } from "antd";
-import styles from "../../styles/component/ProductCard.module.scss";
+import { Card, Divider, Button } from 'antd';
+import styles from '../../styles/component/ProductCard.module.scss';
 
 const ProductCard = ({ name, price, stock }) => {
   return (
@@ -7,7 +7,6 @@ const ProductCard = ({ name, price, stock }) => {
       <Card
         className={styles.card}
         hoverable
-        style={{ width: 340 }}
         cover={
           <img
             alt="example"

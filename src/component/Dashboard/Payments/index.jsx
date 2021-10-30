@@ -11,13 +11,76 @@ export default function Payments() {
       data: {
         username: 'Ankit Goel',
         items: [
-          { id: 0, itemname: 'Turture', quantity: 4, cost: 20 },
-          { id: 1, itemname: 'Momos', quantity: 4, cost: 20 },
-          { id: 2, itemname: 'Lays', quantity: 4, cost: 20 },
-          { id: 3, itemname: 'Shampoo', quantity: 4, cost: 20 },
-          { id: 5, itemname: 'Water Bottle', quantity: 4, cost: 20 },
+          { id: 0, itemname: 'Turture', quantity: 4, price: 20, cost: 80 },
+          { id: 1, itemname: 'Momos', quantity: 4, price: 20, cost: 80 },
+          { id: 2, itemname: 'Lays', quantity: 4, price: 20, cost: 80 },
+          { id: 3, itemname: 'Shampoo', quantity: 4, price: 20, cost: 80 },
+          { id: 4, itemname: 'Water Bottle', quantity: 4, price: 20, cost: 80 },
         ],
         cost: 2504,
+        purchasedOn: new Date(),
+        paymentType: 'PayTM',
+      },
+    },
+    {
+      id: 1,
+      data: {
+        username: 'Disha Bhardwaj',
+        items: [
+          { id: 0, itemname: 'Turture', quantity: 4, price: 20, cost: 80 },
+          { id: 1, itemname: 'Momos', quantity: 4, price: 20, cost: 80 },
+          { id: 2, itemname: 'Lays', quantity: 4, price: 20, cost: 80 },
+          { id: 3, itemname: 'Shampoo', quantity: 4, price: 20, cost: 80 },
+          { id: 4, itemname: 'Water Bottle', quantity: 4, price: 20, cost: 80 },
+          { id: 5, itemname: 'Water Bottle', quantity: 4, price: 20, cost: 80 },
+          { id: 6, itemname: 'Turture', quantity: 4, price: 20, cost: 80 },
+          { id: 7, itemname: 'Momos', quantity: 4, price: 20, cost: 80 },
+          { id: 8, itemname: 'Lays', quantity: 4, price: 20, cost: 80 },
+          { id: 9, itemname: 'Shampoo', quantity: 4, price: 20, cost: 80 },
+          {
+            id: 10,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+          {
+            id: 11,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+          {
+            id: 12,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+          {
+            id: 13,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+          {
+            id: 14,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+          {
+            id: 15,
+            itemname: 'Water Bottle',
+            quantity: 4,
+            price: 20,
+            cost: 80,
+          },
+        ],
+        cost: 8012,
         purchasedOn: new Date(),
         paymentType: 'PayTM',
       },
@@ -28,7 +91,7 @@ export default function Payments() {
     <div className={styles.Payments}>
       <section className={styles.payHead}>
         <div className={styles.title}>
-          <Title level={2}>Payments</Title>
+          <Title level={1}>Payments</Title>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel fugiat
             a natus voluptatum esse pariatur omnis nisi sapiente voluptate
