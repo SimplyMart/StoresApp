@@ -2,7 +2,7 @@ import styles from "../../styles/component/ProductCard.module.scss";
 import { Divider } from "antd";
 import DeleteItem from "./deleteItem";
 import EditItem from "./editItem";
-const ProductCard = ({ name, price, stock, id }) => {
+const ProductCard = ({ name, price, stock }) => {
   return (
     <div className={styles.ProductCard}>
       <div className={styles.productImage}>
@@ -25,10 +25,10 @@ const ProductCard = ({ name, price, stock, id }) => {
         </div>
         <div className={styles.editButton}>
           <div className={styles.edit} style={{ boxShadow: "none" }}>
-            <EditItem />
+            <EditItem data={{ name, price, stock }} />
           </div>
           <div className={styles.delete} style={{ boxShadow: "none" }}>
-            <DeleteItem />
+            <DeleteItem data={{ name, price, stock }} />
           </div>
         </div>
       </div>
