@@ -3,8 +3,9 @@ import styles from '../styles/Dashboard.module.scss';
 import Drawer from '../component/Dashboard/Drawer';
 import Payments from '../component/Dashboard/Payments';
 import Products from '../component/Dashboard/Products';
-import QRcode from '../component/Dashboard/QRcode';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
+import QRcode from '../component/Dashboard/QRcode';
 import { useAuth } from '../utils/context/AuthUserContext';
 
 export default function Dashboard() {
@@ -27,6 +28,9 @@ export default function Dashboard() {
   }
   return (
     <div className={styles.Dashboard}>
+      <Head>
+        <title>Dashboard</title>
+      </Head>
       <Drawer selectedNav={selectedNav} setSelectedNav={setSelectedNav} />
       <div className={styles.dashMain}>
         {navComponents[selectedNav].component}

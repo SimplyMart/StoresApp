@@ -2,6 +2,7 @@ import styles from '../../styles/component/Product.module.scss';
 import { useState } from 'react';
 import ProductCard from '../ProductCard';
 import { doc, getDoc } from 'firebase/firestore';
+import { Typography } from 'antd';
 
 const Items = [
   {
@@ -91,6 +92,8 @@ const Items = [
   },
 ];
 
+const { Title } = Typography;
+
 const Products = () => {
   const [items, setItems] = useState(Items);
 
@@ -106,7 +109,7 @@ const Products = () => {
         <div className={styles.productHeader}>
           <div className={styles.row}>
             <div className={styles.heading}>
-              <h1>Products</h1>
+              <Title level={1}>Products</Title>
               <p>
                 Browse through your shop. We provide you the facility to add new
                 item, delete an exisiting item and edit the product details
