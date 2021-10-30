@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../styles/component/Profile.module.scss';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Typography, Form, Input, Button, Upload, message } from 'antd';
+import { Typography, Input, Button, Upload, message } from 'antd';
+import { updateDoc, doc, getDoc } from '@firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { db, storage } from '../../utils/firebase';
+import { useAuth } from '../../utils/context/AuthUserContext';
 
 const { Title } = Typography;
 
 export default function Profile() {
+  const { authUser } = useAuth();
   const [formFields, setFormFields] = useState({
     storeName: '',
     ownerName: '',
@@ -56,12 +61,52 @@ export default function Profile() {
   const handleFormFields = (e) => {
     setFormFields((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
     const { address, ownerName, storeName, phoneNumber } = formFields;
-    console.log(formFields);
+    let profileUrl = null;
+
+    if (uploadState.file) {
+      const snapshot = await uploadBytes(
+        ref(storage, `/stores/Profile-${authUser.uid}`),
+        uploadState.file,
+      );
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log(downloadURL);
+      profileUrl = downloadURL;
+    }
+
+    await updateDoc(doc(db, 'store', authUser.uid), {
+      address,
+      ownerName,
+      storeName,
+      phoneNumber,
+      profileUrl,
+    });
+    message.success('Profile updated!');
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const docSnap = await getDoc(doc(db, 'store', authUser.uid));
+
+      if (docSnap.exists()) {
+        const { address, ownerName, storeName, phoneNumber, profileUrl } =
+          docSnap.data();
+        setFormFields({
+          address,
+          ownerName,
+          storeName,
+          phoneNumber,
+        });
+        if (profileUrl) setUploadState({ file: { preview: profileUrl } });
+      } else {
+        console.log('No such document!');
+      }
+    };
+    getData();
+  }, [authUser]);
 
   return (
     <div className={styles.Profile}>

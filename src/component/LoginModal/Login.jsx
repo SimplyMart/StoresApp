@@ -4,11 +4,9 @@ import { GoogleOutlined } from '@ant-design/icons';
 import { signInWithGoogle, auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { useAuth } from '../../utils/context/AuthUserContext';
 
 const Login = () => {
   const router = useRouter();
-  const { updateStoreId } = useAuth();
   const [loginUser, setLoginUser] = useState({
     Email: '',
     Password: '',
@@ -28,9 +26,8 @@ const Login = () => {
     const { Email, Password } = loginUser;
 
     try {
-      await signInWithEmailAndPassword(auth, Email, Password).then((user) => {
-        console.log('Success. The user logged in', user.uid);
-        updateStoreId(user.uid);
+      await signInWithEmailAndPassword(auth, Email, Password).then(() => {
+        console.log('Success. The user logged in');
         router.push('/dashboard');
       });
     } catch (error) {
