@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { GoogleAuthProvider } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
+import firebase from "firebase/app";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -39,3 +40,5 @@ export const signInWithGoogle = async () => {
     })
     .catch((err) => console.error(err));
 };
+
+export default firebase;

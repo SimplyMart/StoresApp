@@ -1,7 +1,12 @@
-import '../styles/globals.scss';
+import "../styles/globals.scss";
+import { AuthUserProvider } from "../../helper/AuthUserContext";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <AuthUserProvider>
+      <Component {...pageProps} />
+    </AuthUserProvider>
+  );
 }
 
 export default MyApp;
