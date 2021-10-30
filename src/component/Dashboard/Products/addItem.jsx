@@ -76,7 +76,7 @@ export default function AddProductItem() {
         <Divider />
       </Title>
       <div className={styles.addItemForm}>
-        <Form form={form} layout="vertical" onSubmit={handleFormSubmit}>
+        <Form form={form} layout="vertical" onFinish={handleFormSubmit}>
           <Upload
             name="avatar"
             listType="picture-card"

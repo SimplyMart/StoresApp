@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import styles from '../styles/Dashboard.module.scss';
-import Drawer from '../component/Dashboard/Drawer';
-import Payments from '../component/Dashboard/Payments';
-import Products from '../component/Dashboard/Products';
-import Profile from '../component/Dashboard/Profile';
-import AddProductItem from '../component/Dashboard/Products/addItem';
-import Head from 'next/head';
-import QRcode from '../component/Dashboard/QRcode';
-import { useAuth } from '../utils/context/AuthUserContext';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import styles from "../styles/Dashboard.module.scss";
+import Drawer from "../component/Dashboard/Drawer";
+import Payments from "../component/Dashboard/Payments";
+import Products from "../component/Dashboard/Products";
+import Profile from "../component/Dashboard/Profile";
+import AddProductItem from "../component/Dashboard/Products/addItem";
+import Head from "next/head";
+import QRcode from "../component/Dashboard/QRcode";
+import { useAuth } from "../utils/context/AuthUserContext";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function Dashboard() {
     return <></>;
   }
   if (!loading && !authUser) {
-    router.push('/');
+    router.push("/");
     return <></>;
   }
   return (
