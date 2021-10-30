@@ -1,10 +1,9 @@
 .Products {
   padding: 2% 7%;
   height: 100%;
-  width: 90%;
-  overflow: hidden;
+  width: 100%;
   .productHeader {
-    height: 6%;
+    height: 22rem;
     .row {
       display: flex;
       flex-direction: row;
@@ -25,9 +24,6 @@
           color: grey;
           font-size: 18px;
         }
-      }
-      .productSvg {
-        margin-left: 20%;
       }
       .productLogo {
         height: 100%;

@@ -1,6 +1,7 @@
 import styles from "../../styles/component/Product.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import { doc, getDoc } from "firebase/firestore";
 
 const Items = [
   {
@@ -78,7 +79,7 @@ const Items = [
   },
   {
     id: 1,
-    name: "Chips fndjvdbjdsjvfdz",
+    name: "Chips fndjvdbjdsjvfdz fefersfefe",
     price: 20,
     stock: 20,
   },
@@ -92,6 +93,9 @@ const Items = [
 
 const Products = () => {
   const [items, setItems] = useState(Items);
+  // useEffect(() => {
+
+  // }, [input])
   return (
     <div
       className="site-card-wrapper"
