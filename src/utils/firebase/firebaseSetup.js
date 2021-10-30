@@ -1,10 +1,9 @@
-import { getAuth, signInWithPopup } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-import { GoogleAuthProvider } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
-import firebase from "firebase/app";
+import { getAuth, signInWithPopup } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { collection, doc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -24,7 +23,7 @@ export const auth = getAuth();
 
 const provider = new GoogleAuthProvider();
 
-provider.setCustomParameters({ prompt: "select_account" });
+provider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = async () => {
   signInWithPopup(auth, provider)
@@ -32,7 +31,7 @@ export const signInWithGoogle = async () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      const adminRef = collection(db, "admin");
+      const adminRef = collection(db, 'admin');
       await setDoc(doc(adminRef, user.uid), {
         name: user.displayName,
         email: user.email,
@@ -40,5 +39,3 @@ export const signInWithGoogle = async () => {
     })
     .catch((err) => console.error(err));
 };
-
-export default firebase;

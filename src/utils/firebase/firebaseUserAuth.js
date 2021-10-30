@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { auth } from "../firebaseSetup";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import { auth } from '../firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
   email: user.email,
 });
 
-export default function useFirebaseAuth() {
+export function FirebaseAuth() {
   const router = useRouter();
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function useFirebaseAuth() {
   const signout = () => {
     signOut(auth)
       .then(() => {
-        router.push("/");
+        router.push('/');
       })
       .catch((error) => {
         console.log(error.message);

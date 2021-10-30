@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles/LoginModal.module.scss";
-import { db, auth } from "../../../firebaseSetup";
+import { db, auth } from "../../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/router";

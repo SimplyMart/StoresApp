@@ -1,5 +1,5 @@
-import "../styles/globals.scss";
-import { AuthUserProvider } from "../../helper/AuthUserContext";
+import '../styles/globals.scss';
+import { AuthUserProvider } from '../utils/context/AuthUserContext';
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -1,13 +1,13 @@
-import { useState } from "react";
-import styles from "../../styles/component/Drawer.module.scss";
-import Logo from "../Logo";
-import { Button } from "antd";
+import { useState } from 'react';
+import styles from '../../styles/component/Drawer.module.scss';
+import Logo from '../Logo';
+import { Button } from 'antd';
 import {
   MoneyCollectOutlined,
   OrderedListOutlined,
   LogoutOutlined,
-} from "@ant-design/icons";
-import { useAuth } from "../../../helper/AuthUserContext";
+} from '@ant-design/icons';
+import { useAuth } from '../../utils/context/AuthUserContext';
 
 export default function Drawer() {
   const { signout } = useAuth();
@@ -16,17 +16,17 @@ export default function Drawer() {
   const navList = [
     {
       id: 0,
-      name: "Payments",
+      name: 'Payments',
       icon: <MoneyCollectOutlined />,
     },
     {
       id: 1,
-      name: "Products",
+      name: 'Products',
       icon: <OrderedListOutlined />,
     },
     {
       id: 2,
-      name: "Logout",
+      name: 'Logout',
       icon: <LogoutOutlined />,
     },
   ];

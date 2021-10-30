@@ -1,15 +1,15 @@
-import { useState } from "react";
-import styles from "../../styles/LoginModal.module.scss";
-import { GooglePlusOutlined } from "@ant-design/icons";
-import { signInWithGoogle, auth } from "../../../firebaseSetup";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "next/router";
+import { useState } from 'react';
+import styles from '../../styles/LoginModal.module.scss';
+import { GooglePlusOutlined } from '@ant-design/icons';
+import { signInWithGoogle, auth } from '../../utils/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 const Login = () => {
   const router = useRouter();
   const [loginUser, setLoginUser] = useState({
-    Email: "",
-    Password: "",
+    Email: '',
+    Password: '',
   });
 
   const handleLoginChange = (event) => {
@@ -27,13 +27,13 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, Email, Password).then(() => {
-        console.log("Success. The user logged in");
-        router.push("/dashboard");
+        console.log('Success. The user logged in');
+        router.push('/dashboard');
       });
     } catch (error) {
       alert(error.message);
     }
-    setLoginUser({ Email: "", Password: "" });
+    setLoginUser({ Email: '', Password: '' });
   };
 
   return (
