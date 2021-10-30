@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import styles from '../../styles/QRcode.module.scss';
+import { useAuth } from '../../utils/context/AuthUserContext';
 
 export default function QRcode() {
-  const [word, setWord] = useState('temporary-shop-link-123');
+  const {
+    authUser: { uid },
+  } = useAuth();
+  const [word, setWord] = useState(uid);
   const [size, setSize] = useState(300);
   const [bgColor, setBgColor] = useState('ffffff');
   const [qrCode, setQrCode] = useState('');
