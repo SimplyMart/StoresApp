@@ -42,5 +42,13 @@
   .editFormButton {
     display: flex;
     justify-content: center;
+    button {
+      background-color: rgba(50, 201, 50, 0.726);
+      border: none;
+      padding: 5px;
+      width: 40%;
+      font-size: 1rem;
+      font-weight: 450;
+    }
   }
 }
