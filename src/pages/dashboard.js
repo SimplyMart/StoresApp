@@ -1,9 +1,8 @@
-import styles from '../styles/Dashboard.module.scss';
-import Drawer from '../component/Dashboard/Drawer';
-import Payments from '../component/Dashboard/Payments';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useAuth } from '../utils/context/AuthUserContext';
+import styles from "../styles/Dashboard.module.scss";
+import Drawer from "../component/Dashboard/Drawer";
+import Products from "../component/Dashboard/Products";
+import { useRouter } from "next/router";
+import { useAuth } from "../utils/context/AuthUserContext";
 
 export default function Dashboard() {
   const { authUser, loading } = useAuth();
@@ -11,7 +10,7 @@ export default function Dashboard() {
   console.log(authUser);
 
   if (!loading && !authUser) {
-    router.push('/');
+    router.push("/");
     return <></>;
   }
 
@@ -19,7 +18,9 @@ export default function Dashboard() {
     <div className={styles.Dashboard}>
       {/* Width 21% */}
       <Drawer />
-      <div className={styles.dashMain}>{/* <Payments /> */}</div>
+      <div className={styles.dashMain}>
+        <Products />
+      </div>
     </div>
   );
 }

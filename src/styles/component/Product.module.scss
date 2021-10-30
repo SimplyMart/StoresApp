@@ -1,0 +1,45 @@
+.Products {
+  padding: 2% 7%;
+  height: 100%;
+  width: 90%;
+  overflow: hidden;
+  .productHeader {
+    height: 6%;
+    .row {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      .heading {
+        display: flex;
+        flex-direction: column;
+        padding-left: 3%;
+        h1 {
+          font-weight: bold;
+          text-transform: uppercase;
+          padding-top: 14%;
+          letter-spacing: 0.4rem;
+          font-size: 3rem;
+        }
+        p {
+          line-height: 1.6rem;
+          color: grey;
+          font-size: 18px;
+        }
+      }
+      .productSvg {
+        margin-left: 20%;
+      }
+      .productLogo {
+        height: 100%;
+      }
+    }
+  }
+  .cardContainer {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    align-items: center;
+  }
+}

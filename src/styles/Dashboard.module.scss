@@ -1,5 +1,6 @@
 .Dashboard {
   display: flex;
+  overflow-x: hidden;
 
   .dashMain {
     flex-grow: 1;
