@@ -33,9 +33,9 @@ const LoginModal = () => {
         {toggleLogin ? <Login /> : <Register />}
         <div className={styles.switchUser}>
           <p>
-            New User?
+            {toggleLogin ? "New User?" : "Existing User?"}
             <span onClick={() => setToggleLogin(!toggleLogin)}>
-              {toggleLogin ? "Register" : "Login"}
+              {toggleLogin ? " Register" : " Login"}
             </span>
           </p>
         </div>
