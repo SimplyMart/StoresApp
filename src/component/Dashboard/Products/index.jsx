@@ -1,8 +1,8 @@
-import styles from '../../../styles/component/Product.module.scss';
-import { useState } from 'react';
-import ProductCard from './ProductCard';
-import { doc, getDoc } from 'firebase/firestore';
-import { Typography } from 'antd';
+import styles from "../../../styles/component/Product.module.scss";
+import { useState } from "react";
+import ProductCard from "./ProductCard";
+import { doc, getDoc } from "firebase/firestore";
+import { Typography } from "antd";
 
 const Items = [
   {
@@ -118,6 +118,9 @@ const Products = ({ selectedNav, setSelectedNav }) => {
                 Browse through your shop. We provide you the facility to add new
                 item, delete an exisiting item and edit the product details
               </p>
+              <div>
+                <button onClick={handleAddItem}>Add an item</button>
+              </div>
             </div>
             <div className={styles.productSvg}>
               <img src="/images/product.png" className={styles.productLogo} />
@@ -125,7 +128,6 @@ const Products = ({ selectedNav, setSelectedNav }) => {
           </div>
         </div>
         <div className={styles.prodMain}>
-          <button onClick={handleAddItem}>Add an item</button>
           <div className={styles.cardContainer}>
             {items.map((item, index) => (
               <ProductCard key={index} index={index % 3} {...item} />

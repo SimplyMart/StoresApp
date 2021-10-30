@@ -24,6 +24,19 @@
           color: grey;
           font-size: 18px;
         }
+        button {
+          margin-top: 2rem;
+          margin-left: 2.5%;
+          width: 30%;
+          height: 70%;
+          border: none;
+          background-color: #5ece9e;
+          border-radius: 10px;
+          font-size: 1rem;
+          text-transform: uppercase;
+          font-weight: 500;
+          color: #fff;
+        }
       }
       .productLogo {
         height: 100%;
@@ -31,7 +44,6 @@
     }
   }
   .prodMain {
-    
     .cardContainer {
       width: 100%;
       margin-top: 3%;
