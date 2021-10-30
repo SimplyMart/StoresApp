@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "../../styles/component/Drawer.module.scss";
 import Logo from "../Logo";
+import Link from "next/link";
 import { Button } from "antd";
 import {
   MoneyCollectOutlined,
@@ -14,9 +15,21 @@ export default function Drawer() {
   const [selectedNav, setSelectedNav] = useState(0);
 
   const navList = [
-    { id: 0, name: "Payments", icon: <MoneyCollectOutlined /> },
-    { id: 1, name: "Products", icon: <OrderedListOutlined /> },
-    { id: 2, name: "Logout", icon: <LogoutOutlined /> },
+    {
+      id: 0,
+      name: "Payments",
+      icon: <MoneyCollectOutlined />,
+    },
+    {
+      id: 1,
+      name: "Products",
+      icon: <OrderedListOutlined />,
+    },
+    {
+      id: 2,
+      name: "Logout",
+      icon: <LogoutOutlined />,
+    },
   ];
 
   const handleNav = (e) => {
