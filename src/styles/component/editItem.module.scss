@@ -1,0 +1,46 @@
+.editContainer {
+  height: 100%;
+  .editButton {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    line-height: 2.5;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff !important;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 0;
+    color: inherit;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
+    width: 50%;
+  }
+}
+.editForm {
+  width: 80%;
+  margin: auto;
+  .editFormDetail {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 13px;
+    label {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    input {
+      width: 100%;
+      height: 35px;
+      border: 1px solid rgba(0, 0, 0, 0.192);
+      padding-left: 2%;
+    }
+  }
+  .editFormButton {
+    display: flex;
+    justify-content: center;
+  }
+}

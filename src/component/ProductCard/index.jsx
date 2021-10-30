@@ -1,6 +1,7 @@
-import styles from '../../styles/component/ProductCard.module.scss';
-import { Divider } from 'antd';
-
+import styles from "../../styles/component/ProductCard.module.scss";
+import { Divider } from "antd";
+import DeleteItem from "./deleteItem";
+import EditItem from "./editItem";
 const ProductCard = ({ name, price, stock, id }) => {
   return (
     <div className={styles.ProductCard}>
@@ -23,13 +24,11 @@ const ProductCard = ({ name, price, stock, id }) => {
           </p>
         </div>
         <div className={styles.editButton}>
-          {/* <Link to={`/edit/${id}`} key={id} style={{ width: "100%" }}> */}
-          <div className={styles.edit} style={{ boxShadow: 'none' }}>
-            Edit
+          <div className={styles.edit} style={{ boxShadow: "none" }}>
+            <EditItem />
           </div>
-          {/* </Link> */}
-          <div className={styles.delete} style={{ boxShadow: 'none' }}>
-            Delete
+          <div className={styles.delete} style={{ boxShadow: "none" }}>
+            <DeleteItem />
           </div>
         </div>
       </div>
