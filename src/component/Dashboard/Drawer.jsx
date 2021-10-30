@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles/component/Drawer.module.scss";
 import Logo from "../Logo";
-import Link from "next/link";
 import { Button } from "antd";
 import {
   MoneyCollectOutlined,
@@ -54,7 +53,7 @@ export default function Drawer() {
             <span>{nav.name}</span>
           </Button>
         ))}
-        <Button onClick={signout}> signOut </Button>
+        <Button onClick={signout}>signout</Button>
       </div>
     </div>
   );
