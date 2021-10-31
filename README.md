@@ -3,8 +3,6 @@
 With change in lifestyle and technology people are shifting to more convient way to get their work done.In this race digital payment has increased it's industry significantly. Most people are switching to digital payments for its sheer convenience.
 This raising trend gave us the idea of 'SimplyMart'- a web application to enhance your shopping experience. It works over cashierless checkout technology thus eliminating long lines for customers and reducing running costs for supermarkets.
 
-We at SimplyMart provides different websites for customers and admin.
-
 # Instrustions
 
 We have submitted an organisation link consisting of 2 repositories:
