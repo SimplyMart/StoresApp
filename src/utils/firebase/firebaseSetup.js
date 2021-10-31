@@ -31,10 +31,20 @@ export const signInWithGoogle = async () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      const adminRef = collection(db, 'admin');
-      await setDoc(doc(adminRef, user.uid), {
+      console.log(user);
+
+      await setDoc(doc(collection(db, 'store'), user.uid), {
+        storeName: '',
+        ownerName: '',
+        address: '',
+        phoneNumber: '',
+        profileUrl: user.photoURL,
+        qrcode: `http://api.qrserver.com/v1/create-qr-code/?data=${user.uid}`,
+      });
+      await setDoc(doc(collection(db, 'admin'), user.uid), {
         name: user.displayName,
         email: user.email,
+        storeId: user.uid,
       });
     })
     .catch((err) => console.error(err));

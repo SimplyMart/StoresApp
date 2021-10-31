@@ -47,7 +47,10 @@ const Login = () => {
         <div className={styles.socialContainer}>
           <button
             onClick={() => {
+              setSubmitLoading(true);
               signInWithGoogle();
+              router.push('/dashboard');
+              setSubmitLoading(false);
             }}
           >
             <span>Sign In with&ensp;</span>
