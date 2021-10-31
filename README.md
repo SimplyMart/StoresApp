@@ -83,3 +83,18 @@ This way, your regular shoppers will understand that it is necessary to occasion
 Ans. In a world where everything is becoming online, we have tried to come up with a middle way by mixing offline and online together. Reports say that 92% of people choose offline shopping over online shopping. People like to go out, check, and buy items for different reasons and we are providing them simplyMart so that they don't have to waste their time.
 
 <img src="https://d33wubrfki0l68.cloudfront.net/e079abe345b743e6c6ead1099913dc55aabff31d/6fc0c/images/blog/posts/2014/08/blog-retail-purchase.jpg" />
+
+# Working Model ScreenShots (Admin Website)
+![Screenshot (117)](https://user-images.githubusercontent.com/67470541/139577813-749ffd26-b44e-44ce-a5cd-24d0764327b5.png)
+<br />
+![Screenshot (118)](https://user-images.githubusercontent.com/67470541/139577830-023360c8-7940-4294-8891-0866bfdc2b5c.png)
+<br />
+
+![Screenshot (119)](https://user-images.githubusercontent.com/67470541/139577834-a72d09ac-a2f9-4ea2-99e3-095ac2a5a459.png)
+
+<br />
+![Screenshot (120)](https://user-images.githubusercontent.com/67470541/139577843-ec21096e-50f0-48a9-80c9-82b765cea3f0.png)
+<br />
+![Screenshot (121)](https://user-images.githubusercontent.com/67470541/139577847-58cbd3f3-714e-48a0-af15-4753fe6a80fb.png)
+
+
