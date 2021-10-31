@@ -19,11 +19,9 @@ const DeleteItem = ({ index }) => {
       title: "You sure you want to remove this item?",
       icon: <ExclamationCircleOutlined />,
       async onOk() {
-        console.log(authUser);
         if (authUser) {
           const storeRef = doc(db, "store", authUser.uid);
           await products.splice(index, 1);
-          console.log(products);
           await updateDoc(storeRef, {
             products,
           });
