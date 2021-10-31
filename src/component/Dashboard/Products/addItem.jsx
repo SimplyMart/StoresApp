@@ -1,4 +1,4 @@
-import styles from "../../../styles/component/addItem.module.scss";
+import styles from '../../../styles/component/addItem.module.scss';
 import {
   Typography,
   Upload,
@@ -7,13 +7,13 @@ import {
   Input,
   Button,
   message,
-} from "antd";
-import { useState } from "react";
-import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { useAuth } from "../../../utils/context/AuthUserContext";
-import { updateDoc, doc, arrayUnion } from "@firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { db, storage } from "../../../utils/firebase";
+} from 'antd';
+import { useState } from 'react';
+import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { useAuth } from '../../../utils/context/AuthUserContext';
+import { updateDoc, doc, arrayUnion } from '@firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { db, storage } from '../../../utils/firebase';
 
 const { Title } = Typography;
 
@@ -24,10 +24,12 @@ export default function AddProductItem() {
     storeData: { products },
   } = useAuth();
   const [form] = Form.useForm();
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [itemInfo, setItemInfo] = useState({
-    itemName: "",
-    price: "",
-    stock: "",
+    prodId: '',
+    itemName: '',
+    price: '',
+    stock: '',
   });
   const [uploadState, setUploadState] = useState({
     loading: false,
@@ -40,23 +42,23 @@ export default function AddProductItem() {
   };
 
   function beforeUpload(file) {
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
+      message.error('You can only upload JPG/PNG file!');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error("Image must smaller than 2MB!");
+      message.error('Image must smaller than 2MB!');
     }
     return isJpgOrPng && isLt2M;
   }
 
   const handleUploadChange = (info) => {
-    if (info.file.status === "uploading") {
+    if (info.file.status === 'uploading') {
       setUploadState({ loading: true });
       return;
     }
-    if (info.file.status === "done") {
+    if (info.file.status === 'done') {
       // Get this url from response in real world.
       const file = info.file.originFileObj;
       Object.assign(file, { preview: window.URL.createObjectURL(file) });
@@ -79,23 +81,27 @@ export default function AddProductItem() {
   };
 
   const handleFormSubmit = async (e) => {
-    const { name, price, stock } = e;
+    setSubmitLoading(true);
+    const { name, price, stock, prodId } = e;
     let image = null;
-    const id = new Date().getTime();
 
     if (uploadState.file) {
       const snapshot = await uploadBytes(
-        ref(storage, `/stores/products/item-${id}`),
-        uploadState.file
+        ref(storage, `/stores/products/${prodId}`),
+        uploadState.file,
       );
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log(downloadURL);
       image = downloadURL;
+    } else {
+      message.error('Please add a product image!');
+      setSubmitLoading(false);
+      return;
     }
 
-    await updateDoc(doc(db, "store", authUser.uid), {
+    await updateDoc(doc(db, 'store', authUser.uid), {
       products: arrayUnion({
-        id,
+        prodId,
         itemName: name,
         price,
         stock,
@@ -103,14 +109,15 @@ export default function AddProductItem() {
       }),
     });
     products.push({
-      id,
+      prodId,
       itemName: name,
       price,
       stock,
       image,
     });
     updateStoreData({ products });
-    message.success("Item added successfully!");
+    setSubmitLoading(false);
+    message.success('Item added successfully!');
     onReset();
   };
 
@@ -137,12 +144,26 @@ export default function AddProductItem() {
               <img
                 src={uploadState.file.preview}
                 alt="avatar"
-                style={{ width: "100%" }}
+                style={{ width: '100%' }}
               />
             ) : (
               uploadButton
             )}
           </Upload>
+          <Form.Item
+            className={styles.formInput}
+            label="Product Id"
+            name="prodId"
+            value={itemInfo.prodId}
+            onChange={handleFormFields}
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input placeholder="Enter Product Id" type="number" />
+          </Form.Item>
           <Form.Item
             className={styles.formInput}
             label="Product Name"
@@ -188,7 +209,12 @@ export default function AddProductItem() {
           <Form.Item>
             <div className={styles.formButtons}>
               <div>
-                <Button type="primary" htmlType="submit" className="normalBtn">
+                <Button
+                  loading={submitLoading}
+                  type="primary"
+                  htmlType="submit"
+                  className="normalBtn"
+                >
                   Submit
                 </Button>
               </div>
