@@ -1,23 +1,14 @@
 import styles from "../../../styles/component/Product.module.scss";
-import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
-import { doc, getDoc } from "firebase/firestore";
-import { db, storage } from "../../../utils/firebase";
 import { Typography } from "antd";
 import { useAuth } from "../../../utils/context/AuthUserContext";
 
 const { Title } = Typography;
 
 const Products = ({ selectedNav, setSelectedNav }) => {
-  const [items, setItems] = useState([]);
-  const { authUser } = useAuth();
-
-  useEffect(async () => {
-    const docSnap = await getDoc(doc(db, "store", authUser.uid));
-    if (docSnap.exists()) {
-      setItems(docSnap.data().products);
-    }
-  }, []);
+  const {
+    storeData: { products },
+  } = useAuth();
 
   const handleAddItem = () => {
     setSelectedNav(4);
@@ -51,7 +42,7 @@ const Products = ({ selectedNav, setSelectedNav }) => {
         </div>
         <div className={styles.prodMain}>
           <div className={styles.cardContainer}>
-            {items.map((item, index) => (
+            {products?.map((item, index) => (
               <ProductCard key={index} index={index % 3} {...item} />
             ))}
           </div>

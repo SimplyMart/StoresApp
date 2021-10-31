@@ -1,10 +1,17 @@
+import { useState, useEffect } from 'react';
 import styles from '../../../styles/component/Payments.module.scss';
-import { Typography, Divider } from 'antd';
+import { Typography, Divider, message } from 'antd';
 import PaymentCard from './PaymentCard';
+import { useAuth } from '../../../utils/context/AuthUserContext';
+import { doc, getDoc } from '@firebase/firestore';
+import { db } from '../../../utils/firebase';
 
 const { Title } = Typography;
 
 export default function Payments() {
+  const { authUser } = useAuth();
+  const [paymentsData, setPaymentsData] = useState([]);
+
   const dummy = [
     {
       id: 0,
@@ -87,6 +94,22 @@ export default function Payments() {
     },
   ];
 
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     message.info('Loading payments!');
+
+  //     const docSnap = await getDoc(doc(db, 'store', authUser.uid));
+
+  //     if (docSnap.exists()) {
+  //       setPaymentsData(docSnap.data());
+  //       console.log(docSnap.data());
+  //     } else {
+  //       console.log('No such document!');
+  //     }
+  //   };
+  //   getData();
+  // }, [authUser]);
+
   return (
     <div className={styles.Payments}>
       <section className={styles.payHead}>
@@ -104,7 +127,7 @@ export default function Payments() {
       </section>
       <Divider className={styles.headDivider} />
       <section className={styles.main}>
-        {dummy.map((card) => (
+        {paymentsData.map((card) => (
           <PaymentCard key={card.id} details={card.data} />
         ))}
       </section>

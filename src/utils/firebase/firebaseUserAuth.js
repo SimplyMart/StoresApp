@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { auth } from '../firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -12,6 +12,7 @@ export function FirebaseAuth() {
   const router = useRouter();
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [storeData, setStoreData] = useState([]);
 
   const authStateChanged = async (authState) => {
     if (!authState) {
@@ -26,11 +27,15 @@ export function FirebaseAuth() {
     setLoading(false);
   };
 
+  const updateStoreData = (data, extras = {}) => {
+    setStoreData((prev) => ({ ...prev, ...data, ...extras }));
+  };
+
   const signout = () => {
     setLoading(true);
     signOut(auth)
       .then(() => {
-        router.push('/');
+        router.push("/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -46,8 +51,10 @@ export function FirebaseAuth() {
   }, []);
 
   return {
+    storeData,
     authUser,
     loading,
     signout,
+    updateStoreData,
   };
 }

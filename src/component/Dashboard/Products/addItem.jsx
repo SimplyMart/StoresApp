@@ -18,7 +18,11 @@ import { db, storage } from "../../../utils/firebase";
 const { Title } = Typography;
 
 export default function AddProductItem() {
-  const { authUser } = useAuth();
+  const {
+    authUser,
+    updateStoreData,
+    storeData: { products },
+  } = useAuth();
   const [form] = Form.useForm();
   const [itemInfo, setItemInfo] = useState({
     itemName: "",
@@ -98,7 +102,14 @@ export default function AddProductItem() {
         image,
       }),
     });
-
+    products.push({
+      id,
+      itemName: name,
+      price,
+      stock,
+      image,
+    });
+    updateStoreData({ products });
     message.success("Item added successfully!");
     onReset();
   };

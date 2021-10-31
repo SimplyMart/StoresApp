@@ -10,17 +10,20 @@ import { useAuth } from '../../utils/context/AuthUserContext';
 const { Title } = Typography;
 
 export default function Profile() {
-  const { authUser } = useAuth();
+  const {
+    authUser,
+    storeData: { address, ownerName, storeName, phoneNumber, profileUrl },
+  } = useAuth();
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [formFields, setFormFields] = useState({
-    storeName: '',
-    ownerName: '',
-    phoneNumber: '',
-    address: '',
+    storeName,
+    ownerName,
+    phoneNumber,
+    address,
   });
   const [uploadState, setUploadState] = useState({
     loading: false,
     file: null,
-    imageUrl: null,
   });
 
   function beforeUpload(file) {
@@ -64,12 +67,13 @@ export default function Profile() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
     const { address, ownerName, storeName, phoneNumber } = formFields;
     let profileUrl = null;
 
     if (uploadState.file) {
       const snapshot = await uploadBytes(
-        ref(storage, `/stores/Profile-${authUser.uid}`),
+        ref(storage, `/stores/profiles/${authUser.uid}`),
         uploadState.file,
       );
       const downloadURL = await getDownloadURL(snapshot.ref);
@@ -84,29 +88,13 @@ export default function Profile() {
       phoneNumber,
       profileUrl,
     });
+    setSubmitLoading(false);
     message.success('Profile updated!');
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const docSnap = await getDoc(doc(db, 'store', authUser.uid));
-
-      if (docSnap.exists()) {
-        const { address, ownerName, storeName, phoneNumber, profileUrl } =
-          docSnap.data();
-        setFormFields({
-          address,
-          ownerName,
-          storeName,
-          phoneNumber,
-        });
-        if (profileUrl) setUploadState({ file: { preview: profileUrl } });
-      } else {
-        console.log('No such document!');
-      }
-    };
-    getData();
-  }, [authUser]);
+    if (profileUrl) setUploadState({ file: { preview: profileUrl } });
+  }, [profileUrl]);
 
   return (
     <div className={styles.Profile}>
@@ -177,7 +165,7 @@ export default function Profile() {
           />
         </div>
         <Button
-          loading={false}
+          loading={submitLoading}
           type="primary"
           htmlType="submit"
           className="normalBtn"

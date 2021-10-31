@@ -4,7 +4,6 @@ import DeleteItem from "./deleteItem";
 import EditItem from "./editItem";
 
 const ProductCard = ({ itemName, price, stock, image, index }) => {
-  console.log(index);
   return (
     <div className={styles.ProductCard}>
       <div className={styles.productImage}>
@@ -30,7 +29,7 @@ const ProductCard = ({ itemName, price, stock, image, index }) => {
             <EditItem data={{ itemName, price, stock }} />
           </div>
           <div className={styles.delete} style={{ boxShadow: "none" }}>
-            <DeleteItem data={{ index }} />
+            <DeleteItem index={index} />
           </div>
         </div>
       </div>
