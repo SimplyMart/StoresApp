@@ -1,13 +1,23 @@
-import { Modal, Button } from 'antd';
-import { useState } from 'react';
-import styles from '../../../styles/component/editItem.module.scss';
+import { Modal, Button } from "antd";
+import { useState } from "react";
+import styles from "../../../styles/component/editItem.module.scss";
+import { doc, updateDoc } from "@firebase/firestore";
+import { useAuth } from "../../../utils/context/AuthUserContext";
+import { db } from "../../../utils/firebase";
 
-const EditItem = ({ name, price, stock }) => {
+const EditItem = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const {
+    authUser,
+    loading,
+    updateStoreData,
+    storeData: { products },
+  } = useAuth();
   const [details, setDetails] = useState({
-    name: ' ',
-    price: ' ',
-    stock: ' ',
+    itemName: data.itemName,
+    price: data.price,
+    stock: data.stock,
+    index: data.index,
   });
 
   const showModal = () => {
@@ -29,9 +39,15 @@ const EditItem = ({ name, price, stock }) => {
   const submitEditForm = async (event) => {
     event.preventDefault();
 
-    const { name, price, stock } = details;
-
+    const { itemName, price, stock, index } = details;
+    console.log(products);
+    products[index] = { ...products[index], itemName, price, stock };
     try {
+      const storeRef = doc(db, "store", authUser.uid);
+      await updateDoc(storeRef, {
+        //Hello
+      });
+      updateStoreData({ products });
     } catch (error) {
       alert(error.message);
     }
@@ -59,10 +75,10 @@ const EditItem = ({ name, price, stock }) => {
               <label htmlFor="name">Name</label>
               <input
                 id="name"
-                name="name"
+                name="itemName"
                 type="text"
                 placeholder="Item Name"
-                value={details.name}
+                value={details.itemName}
                 onChange={handleChange}
                 required
               />
