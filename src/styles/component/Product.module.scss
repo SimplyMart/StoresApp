@@ -2,16 +2,21 @@
   width: 100%;
   padding: 2% 3%;
   // overflow: hidden;
+
   .productHeader {
     height: 22rem;
+
     .row {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       height: 100%;
+
       .heading {
         display: flex;
         flex-direction: column;
         padding-left: 3%;
+
         h1 {
           font-weight: 700;
           text-transform: uppercase;
@@ -19,11 +24,13 @@
           letter-spacing: 3px;
           font-size: 2.5rem;
         }
+
         p {
           line-height: 1.6rem;
           color: grey;
           font-size: 18px;
         }
+
         button {
           margin-top: 2rem;
           margin-left: 2.5%;
@@ -38,11 +45,14 @@
           color: #fff;
         }
       }
+
       .productLogo {
         height: 100%;
+        margin-right: 50px;
       }
     }
   }
+
   .prodMain {
     .cardContainer {
       width: 100%;

@@ -117,9 +117,8 @@ export default function Payments() {
         <div className={styles.title}>
           <Title level={1}>Payments</Title>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel fugiat
-            a natus voluptatum esse pariatur omnis nisi sapiente voluptate
-            tempora.
+            Sit back and Relax!
+            <br /> We're here to manage all your transactions!
           </p>
         </div>
         <div className={styles.illus}>
