@@ -91,11 +91,11 @@ Ans. In a world where everything is becoming online, we have tried to come up wi
 <br />
 
 ![Screenshot (119)](https://user-images.githubusercontent.com/67470541/139577834-a72d09ac-a2f9-4ea2-99e3-095ac2a5a459.png)
-
 <br />
-![Screenshot (120)](https://user-images.githubusercontent.com/67470541/139577843-ec21096e-50f0-48a9-80c9-82b765cea3f0.png)
-
+![Screenshot (120)](https://user-images.githubusercontent.com/67470541/139577920-1b491e27-0513-40f2-8c14-3025ca6a1454.png)
 <br />
-![Screenshot (121)](https://user-images.githubusercontent.com/67470541/139577847-58cbd3f3-714e-48a0-af15-4753fe6a80fb.png)
+
+![Screenshot (121)](https://user-images.githubusercontent.com/67470541/139577930-692f337c-be26-4fd7-9431-7b0624f23ac4.png)
+
 
 
