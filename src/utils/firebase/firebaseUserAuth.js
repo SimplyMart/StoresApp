@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { auth } from '../firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from "react";
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -35,7 +35,7 @@ export function FirebaseAuth() {
     setLoading(true);
     signOut(auth)
       .then(() => {
-        router.push('/');
+        router.push("/");
       })
       .catch((error) => {
         console.log(error.message);
