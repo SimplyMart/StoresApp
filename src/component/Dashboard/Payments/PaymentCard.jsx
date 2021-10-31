@@ -4,8 +4,8 @@ import styles from '../../../styles/component/Payments.module.scss';
 
 const { Title } = Typography;
 
-export default function PaymentCard({ details }) {
-  const { username, items, purchasedOn, cost, phoneNumber } = details;
+export default function PaymentCard({ data }) {
+  const { items, purchasedOn, cost, username, phoneNumber } = data;
   const [view, toggleView] = useState(false);
 
   const itemColumns = [
@@ -13,7 +13,7 @@ export default function PaymentCard({ details }) {
       title: 'S. No.',
       dataIndex: 'id',
       key: 'id',
-      render: (text) => <a>{text + 1}</a>,
+      render: (text) => <a>{text}</a>,
     },
     {
       title: 'Item Name',
@@ -46,7 +46,7 @@ export default function PaymentCard({ details }) {
   return (
     <div className={styles.PaymentCard}>
       <p className={styles.time}>
-        {purchasedOn.toLocaleString('en-US', {
+        {new Date(purchasedOn.seconds * 1000).toLocaleString('en-US', {
           year: 'numeric',
           month: 'short',
           day: '2-digit',

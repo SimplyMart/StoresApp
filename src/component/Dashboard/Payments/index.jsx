@@ -3,14 +3,14 @@ import styles from '../../../styles/component/Payments.module.scss';
 import { Typography, Divider, message } from 'antd';
 import PaymentCard from './PaymentCard';
 import { useAuth } from '../../../utils/context/AuthUserContext';
-import { doc, getDoc } from '@firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../../utils/firebase';
 
 const { Title } = Typography;
 
 export default function Payments() {
   const { authUser } = useAuth();
-  const [paymentsData, setPaymentsData] = useState([]);
+  const [paymentsData, setPaymentsData] = useState({});
 
   const dummy = [
     {
@@ -94,21 +94,22 @@ export default function Payments() {
     },
   ];
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     message.info('Loading payments!');
+  useEffect(() => {
+    const getData = async () => {
+      message.info('Loading payments');
 
-  //     const docSnap = await getDoc(doc(db, 'store', authUser.uid));
+      const paymentQuery = query(
+        collection(db, 'payments'),
+        where('storeId', '==', authUser.uid),
+      );
 
-  //     if (docSnap.exists()) {
-  //       setPaymentsData(docSnap.data());
-  //       console.log(docSnap.data());
-  //     } else {
-  //       console.log('No such document!');
-  //     }
-  //   };
-  //   getData();
-  // }, [authUser]);
+      const querySnapshot = await getDocs(paymentQuery);
+      querySnapshot.forEach((doc) => {
+        setPaymentsData((prev) => ({ ...prev, [doc.id]: doc.data() }));
+      });
+    };
+    if (authUser) getData();
+  }, [authUser]);
 
   return (
     <div className={styles.Payments}>
@@ -127,9 +128,10 @@ export default function Payments() {
       </section>
       <Divider className={styles.headDivider} />
       <section className={styles.main}>
-        {paymentsData.map((card) => (
-          <PaymentCard key={card.id} details={card.data} />
-        ))}
+        {Object.keys(paymentsData).map((key) => {
+          const data = paymentsData[key];
+          return <PaymentCard key={key} data={data} />;
+        })}
       </section>
     </div>
   );

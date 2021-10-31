@@ -28,7 +28,7 @@ export function FirebaseAuth() {
   };
 
   const updateStoreData = (data) => {
-    setStoreData(data);
+    setStoreData((prev) => ({ ...prev, ...data }));
   };
 
   const signout = () => {
