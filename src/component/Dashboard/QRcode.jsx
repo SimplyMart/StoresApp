@@ -22,7 +22,7 @@ export default function QRcode() {
 
   return (
     <div className={styles.QRcode}>
-      <h1 className={styles.codeHeading}>QR Code Generator</h1>
+      <h1 className={styles.codeHeading}>Your Store's QR Code</h1>
       <div className={styles.main}>
         <div className={styles.outputBox}>
           <img src={qrCode} alt="" />
