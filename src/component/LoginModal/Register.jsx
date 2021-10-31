@@ -4,9 +4,11 @@ import { db, auth } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import { Button } from 'antd';
 
 const Register = () => {
   const router = useRouter();
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [signUpUser, setSignUpUser] = useState({
     Name: '',
     Email: '',
@@ -23,42 +25,35 @@ const Register = () => {
 
   const submitSignUp = async (event) => {
     event.preventDefault();
+    setSubmitLoading(true);
     const { Name, Email, Password } = signUpUser;
 
-    try {
-      createUserWithEmailAndPassword(auth, Email, Password)
-        .then(async (result) => {
-          console.log(result);
-          const user = result.user;
-          // Initialise store
-          await setDoc(doc(collection(db, 'store'), user.uid), {
-            storeName: '',
-            ownerName: '',
-            address: '',
-            phoneNumber: '',
-            profileUrl: null,
-            qrcode: `http://api.qrserver.com/v1/create-qr-code/?data=${user.uid}`,
-          });
-          await setDoc(doc(collection(db, 'admin'), user.uid), {
-            name: Name,
-            email: Email,
-            storeId: user.uid,
-          });
-        })
-        .then(() => {
-          console.log('Success. New user created in Firebase');
-          router.push('/dashboard');
-        })
-        .catch((error) => alert(error.message));
+    const result = await createUserWithEmailAndPassword(auth, Email, Password);
+    if (!result) return;
+    const user = result?.user;
 
-      setSignUpUser({
-        Name: '',
-        Email: '',
-        Password: '',
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    // Initialise store
+    await setDoc(doc(collection(db, 'store'), user.uid), {
+      storeName: '',
+      ownerName: '',
+      address: '',
+      phoneNumber: '',
+      profileUrl: null,
+      qrcode: `http://api.qrserver.com/v1/create-qr-code/?data=${user.uid}`,
+    });
+    await setDoc(doc(collection(db, 'admin'), user.uid), {
+      name: Name,
+      email: Email,
+      storeId: user.uid,
+    });
+    console.log('Success. New user created in Firebase');
+    setSignUpUser({
+      Name: '',
+      Email: '',
+      Password: '',
+    });
+    setSubmitLoading(false);
+    router.push('/dashboard');
   };
   return (
     <div className={styles.baseContainer}>
@@ -96,7 +91,9 @@ const Register = () => {
             />
           </div>
           <div className={styles.btn}>
-            <button>Register</button>
+            <Button htmlType="submit" loading={submitLoading}>
+              Register
+            </Button>
           </div>
         </form>
       </div>

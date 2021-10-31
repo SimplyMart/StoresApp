@@ -4,9 +4,11 @@ import { GoogleOutlined } from '@ant-design/icons';
 import { signInWithGoogle, auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { Button } from 'antd';
 
 const Login = () => {
   const router = useRouter();
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [loginUser, setLoginUser] = useState({
     Email: '',
     Password: '',
@@ -22,7 +24,7 @@ const Login = () => {
 
   const submitSignIn = async (event) => {
     event.preventDefault();
-
+    setSubmitLoading(true);
     const { Email, Password } = loginUser;
 
     try {
@@ -31,9 +33,11 @@ const Login = () => {
         router.push('/dashboard');
       });
     } catch (error) {
+      setSubmitLoading(false);
       alert(error.message);
     }
     setLoginUser({ Email: '', Password: '' });
+    setSubmitLoading(false);
   };
 
   return (
@@ -72,7 +76,9 @@ const Login = () => {
             />
           </div>
           <div className={styles.btn}>
-            <button>Login</button>
+            <Button htmlType="submit" loading={submitLoading}>
+              Login
+            </Button>
           </div>
         </form>
       </div>

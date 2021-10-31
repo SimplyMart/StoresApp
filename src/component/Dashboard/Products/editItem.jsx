@@ -1,12 +1,13 @@
-import { Modal, Button } from "antd";
-import { useState } from "react";
-import styles from "../../../styles/component/editItem.module.scss";
-import { doc, updateDoc } from "@firebase/firestore";
-import { useAuth } from "../../../utils/context/AuthUserContext";
-import { db } from "../../../utils/firebase";
+import { Modal, Button } from 'antd';
+import { useState } from 'react';
+import styles from '../../../styles/component/editItem.module.scss';
+import { doc, updateDoc } from '@firebase/firestore';
+import { useAuth } from '../../../utils/context/AuthUserContext';
+import { db } from '../../../utils/firebase';
 
 const EditItem = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const {
     authUser,
     loading,
@@ -38,19 +39,22 @@ const EditItem = ({ data }) => {
 
   const submitEditForm = async (event) => {
     event.preventDefault();
-
+    setSubmitLoading(true);
     const { itemName, price, stock, index } = details;
     console.log(products);
     products[index] = { ...products[index], itemName, price, stock };
     try {
-      const storeRef = doc(db, "store", authUser.uid);
+      const storeRef = doc(db, 'store', authUser.uid);
       await updateDoc(storeRef, {
-        //Hello
+        products,
       });
       updateStoreData({ products });
+      handleCancel();
     } catch (error) {
+      setSubmitLoading(false);
       alert(error.message);
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -108,7 +112,9 @@ const EditItem = ({ data }) => {
               />
             </div>
             <div className={styles.editFormButton}>
-              <button type="submit">Save Changes</button>
+              <Button htmlType="submit" loading={submitLoading}>
+                Save Changes
+              </Button>
             </div>
           </form>
         </div>
