@@ -5,7 +5,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
 
-const DeleteItem = () => {
+const DeleteItem = ({ index }) => {
   const showPromiseConfirm = () => {
     confirm({
       title: "You sure you want to remove this item?",

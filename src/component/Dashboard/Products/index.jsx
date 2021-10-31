@@ -1,101 +1,23 @@
 import styles from "../../../styles/component/Product.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { doc, getDoc } from "firebase/firestore";
+import { db, storage } from "../../../utils/firebase";
 import { Typography } from "antd";
-
-const Items = [
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips fndjvdbjdsjvfdz fefersfefe",
-    price: 20,
-    stock: 20,
-  },
-  {
-    id: 1,
-    name: "Chips",
-    price: 20,
-    stock: 20,
-  },
-];
+import { useAuth } from "../../../utils/context/AuthUserContext";
 
 const { Title } = Typography;
 
 const Products = ({ selectedNav, setSelectedNav }) => {
-  const [items, setItems] = useState(Items);
+  const [items, setItems] = useState([]);
+  const { authUser } = useAuth();
+
+  useEffect(async () => {
+    const docSnap = await getDoc(doc(db, "store", authUser.uid));
+    if (docSnap.exists()) {
+      setItems(docSnap.data().products);
+    }
+  }, []);
 
   const handleAddItem = () => {
     setSelectedNav(4);
