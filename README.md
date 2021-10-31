@@ -1,6 +1,6 @@
-## Overview 🪟
+# Overview
 
-With change in lifestyle and technology people are shifting to more convient way to get their work done.In this race digital payment has increased it's industry significantly. Most people are switching to digital payments for its sheer convenience.
+With change in lifestyle and technology people are shifting to more convient way to get their work done. In this race digital payment has increased it's industry significantly. Most people are switching to digital payments for its sheer convenience.
 This raising trend gave us the idea of 'SimplyMart'- a web application to enhance your shopping experience. It works over cashierless checkout technology thus eliminating long lines for customers and reducing running costs for supermarkets.
 
 # Instrustions
@@ -23,10 +23,6 @@ We have submitted an organisation link consisting of 2 repositories:
   - Profile page.
 
 **Note: Client app is an app for smartphones only. Please use it on a smartphone only.**
-
-# Overview
-
-SimplyMart is an application that provides its users easy self-service at shopping marts in a very simple way because it eliminates the long queues and reduces running costs for marts.
 
 # Inspiration
 
@@ -58,7 +54,7 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 
 # Built With
 
-- HTLM
+- HTML
 - CSS
 - SASS
 - ReactJs
@@ -69,6 +65,7 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 # FAQs
 
 **Q. How do you plan to prevent theft which might take place?**
+<br />
 Ans. One of the easiest ways to prevent theft is randomised checkout control, which uses an algorithm to randomly select carts/baskets for control before they leave the mart.
 
 If a customer’s cart is selected for a random check, the app prompts them to go to the designated area for a check. Their app is locked, making them unable to pay and leave the store before having their cart checked.
@@ -82,6 +79,7 @@ When the customer accepts the corrections, the updated cart is sent to the custo
 This way, your regular shoppers will understand that it is necessary to occasionally have checks to be able to offer frictionless checkout. On the other hand, shoplifters will be deterred if they know that there is a chance that their bag might be checked.
 
 **Q. Why do you think your app is useful if services like Amazon deliver stuff and even groceries directly at your home?**
+<br />
 Ans. In a world where everything is becoming online, we have tried to come up with a middle way by mixing offline and online together. Reports say that 92% of people choose offline shopping over online shopping. People like to go out, check, and buy items for different reasons and we are providing them simplyMart so that they don't have to waste their time.
 
 <img src="https://d33wubrfki0l68.cloudfront.net/e079abe345b743e6c6ead1099913dc55aabff31d/6fc0c/images/blog/posts/2014/08/blog-retail-purchase.jpg" />
