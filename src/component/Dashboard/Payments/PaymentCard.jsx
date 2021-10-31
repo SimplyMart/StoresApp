@@ -11,8 +11,8 @@ export default function PaymentCard({ data }) {
   const itemColumns = [
     {
       title: 'S. No.',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'prodId',
+      key: 'prodId',
       render: (text) => <a>{text}</a>,
     },
     {
