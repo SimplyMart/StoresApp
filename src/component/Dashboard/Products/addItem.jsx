@@ -93,11 +93,12 @@ export default function AddProductItem() {
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log(downloadURL);
       image = downloadURL;
-    } else {
-      message.error("Please add a product image!");
-      setSubmitLoading(false);
-      return;
-    }
+    } 
+    // else {
+    //   message.error("Please add a product image!");
+    //   setSubmitLoading(false);
+    //   return;
+    // }
 
     await updateDoc(doc(db, "store", authUser.uid), {
       products: arrayUnion({
