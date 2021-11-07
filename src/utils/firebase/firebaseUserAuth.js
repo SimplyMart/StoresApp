@@ -18,6 +18,7 @@ export function FirebaseAuth() {
     if (!authState) {
       setAuthUser(null);
       setLoading(false);
+      setStoreData([]);
       return;
     }
 
