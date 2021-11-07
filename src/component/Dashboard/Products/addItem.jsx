@@ -101,7 +101,7 @@ export default function AddProductItem() {
 
     await updateDoc(doc(db, "store", authUser.uid), {
       products: arrayUnion({
-        prodId,
+        prodId, 
         itemName: name,
         price,
         stock,

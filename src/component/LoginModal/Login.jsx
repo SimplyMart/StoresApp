@@ -40,19 +40,19 @@ const Login = () => {
     setSubmitLoading(false);
   };
 
+  const handleGoogleLogin = async () => {
+    setSubmitLoading(true);
+    await signInWithGoogle();
+    router.push('/dashboard');
+    setSubmitLoading(false);
+  };
+
   return (
     <div className={styles.baseContainer}>
       <div className={styles.loginHeader}>Login</div>
       <div className={styles.loginContent}>
         <div className={styles.socialContainer}>
-          <button
-            onClick={() => {
-              setSubmitLoading(true);
-              signInWithGoogle();
-              router.push('/dashboard');
-              setSubmitLoading(false);
-            }}
-          >
+          <button onClick={handleGoogleLogin}>
             <span>Sign In with&ensp;</span>
             <GoogleOutlined />
           </button>
