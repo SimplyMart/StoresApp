@@ -52,10 +52,13 @@ export default function Profile() {
 
       if (file) {
         const storageRef = ref(storage, `/stores/profiles/${authUser.uid}`);
-        const snapshot = await uploadBytes(storageRef, file);
-        const downloadURL = await getDownloadURL(snapshot.ref);
-        console.log(downloadURL);
-        profileUrlNew = downloadURL;
+        await uploadBytes(storageRef, file)
+          .then(async (snapshot) => {
+            const downloadURL = await getDownloadURL(snapshot.ref);
+            console.log(downloadURL);
+            profileUrlNew = downloadURL;
+          })
+          .catch((err) => console.log(err));
       }
 
       await updateDoc(doc(db, 'store', authUser.uid), {
