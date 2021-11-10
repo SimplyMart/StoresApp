@@ -40,7 +40,7 @@ export default function Profile() {
     return isJpgOrPng && isLt2M;
   }
 
-  const handleUploadChange = (info) => {
+  const handleUploadChange = async (info) => {
     if (info.file.status === 'uploading') {
       setUploadState({ loading: true });
       return;
@@ -48,11 +48,27 @@ export default function Profile() {
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       const file = info.file.originFileObj;
-      Object.assign(file, { preview: window.URL.createObjectURL(file) });
+      let profileUrlNew = profileUrl;
+
+      if (file) {
+        const storageRef = ref(storage, `/stores/profiles/${authUser.uid}`);
+        const snapshot = await uploadBytes(storageRef, file);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        console.log(downloadURL);
+        profileUrlNew = downloadURL;
+      }
+
+      await updateDoc(doc(db, 'store', authUser.uid), {
+        profileUrl: profileUrlNew,
+      });
+      updateStoreData({
+        profileUrl: profileUrlNew,
+      });
       setUploadState({
-        file,
+        ...uploadState,
         loading: false,
       });
+      message.success('Profile image updated!');
     }
   };
 
@@ -71,29 +87,18 @@ export default function Profile() {
     e.preventDefault();
     setSubmitLoading(true);
     const { address, ownerName, storeName, phoneNumber } = formFields;
-    let profileUrlNew = profileUrl;
-
-    if (uploadState.file) {
-      const storageRef = ref(storage, `/stores/profiles/${authUser.uid}`);
-      const snapshot = await uploadBytes(storageRef, uploadState.file);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      console.log(downloadURL);
-      profileUrlNew = downloadURL;
-    }
 
     await updateDoc(doc(db, 'store', authUser.uid), {
       address,
       ownerName,
       storeName,
       phoneNumber,
-      profileUrl: profileUrlNew,
     });
     updateStoreData({
       address,
       ownerName,
       storeName,
       phoneNumber,
-      profileUrl: profileUrlNew,
     });
     setSubmitLoading(false);
     message.success('Profile updated!');
