@@ -48,30 +48,11 @@ export default function Profile() {
     if (info.file.status === 'done') {
       // Get this url from response in real world.
       const file = info.file.originFileObj;
-      let profileUrlNew = profileUrl;
-
-      if (file) {
-        const storageRef = ref(storage, `/stores/profiles/${authUser.uid}`);
-        await uploadBytes(storageRef, file)
-          .then(async (snapshot) => {
-            const downloadURL = await getDownloadURL(snapshot.ref);
-            console.log(downloadURL);
-            profileUrlNew = downloadURL;
-          })
-          .catch((err) => console.log(err));
-      }
-
-      await updateDoc(doc(db, 'store', authUser.uid), {
-        profileUrl: profileUrlNew,
-      });
-      updateStoreData({
-        profileUrl: profileUrlNew,
-      });
+      Object.assign(file, { preview: window.URL.createObjectURL(file) });
       setUploadState({
-        ...uploadState,
+        file,
         loading: false,
       });
-      message.success('Profile image updated!');
     }
   };
 
@@ -90,18 +71,31 @@ export default function Profile() {
     e.preventDefault();
     setSubmitLoading(true);
     const { address, ownerName, storeName, phoneNumber } = formFields;
+    let profileUrlNew = profileUrl;
+
+    if (uploadState.file) {
+      const snapshot = await uploadBytes(
+        ref(storage, `/stores/products/${authUser.uid}`),
+        uploadState.file,
+      );
+      const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log(downloadURL);
+      profileUrlNew = downloadURL;
+    }
 
     await updateDoc(doc(db, 'store', authUser.uid), {
       address,
       ownerName,
       storeName,
       phoneNumber,
+      profileUrl: profileUrlNew,
     });
     updateStoreData({
       address,
       ownerName,
       storeName,
       phoneNumber,
+      profileUrl: profileUrlNew,
     });
     setSubmitLoading(false);
     message.success('Profile updated!');
