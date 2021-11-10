@@ -71,16 +71,14 @@ export default function Profile() {
     e.preventDefault();
     setSubmitLoading(true);
     const { address, ownerName, storeName, phoneNumber } = formFields;
-    let profileUrl = null;
+    let profileUrlNew = profileUrl;
 
     if (uploadState.file) {
-      const snapshot = await uploadBytes(
-        ref(storage, `/stores/profiles/${authUser.uid}`),
-        uploadState.file,
-      );
+      const storageRef = ref(storage, `/stores/profiles/${authUser.uid}`);
+      const snapshot = await uploadBytes(storageRef, uploadState.file);
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log(downloadURL);
-      profileUrl = downloadURL;
+      profileUrlNew = downloadURL;
     }
 
     await updateDoc(doc(db, 'store', authUser.uid), {
@@ -88,9 +86,15 @@ export default function Profile() {
       ownerName,
       storeName,
       phoneNumber,
-      profileUrl,
+      profileUrl: profileUrlNew,
     });
-    updateStoreData({ address, ownerName, storeName, phoneNumber, profileUrl });
+    updateStoreData({
+      address,
+      ownerName,
+      storeName,
+      phoneNumber,
+      profileUrl: profileUrlNew,
+    });
     setSubmitLoading(false);
     message.success('Profile updated!');
   };
