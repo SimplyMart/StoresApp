@@ -125,28 +125,33 @@ export default function AddProductItem() {
   return (
     <div className={styles.additem}>
       <div className={styles.newItemIllus}>
-        <img src='/images/addNewItem.png'></img>
+        <img src="/images/addNewItem.png"></img>
       </div>
       <Title level={1}>
         ADD A NEW ITEM
         <Divider />
       </Title>
       <div className={styles.addItemForm}>
-        <Form form={form} layout='vertical' onFinish={handleFormSubmit}>
+        <Form form={form} layout="vertical" onFinish={handleFormSubmit}>
           <Upload
-            name='avatar'
-            listType='picture-card'
+            name="avatar"
+            listType="picture-card"
             style={{ marginBottom: 150 }}
-            className='imageUpload'
+            className="imageUpload"
             showUploadList={false}
             beforeUpload={beforeUpload}
+            customRequest={({ file, onSuccess }) => {
+              setTimeout(() => {
+                onSuccess('ok');
+              }, 0);
+            }}
             onChange={handleUploadChange}
           >
             {uploadState.file ? (
               <img
                 src={uploadState.file.preview}
-                alt='avatar'
-                style={{ width: "100%", height: "100%" }}
+                alt="avatar"
+                style={{ width: '100%', height: '100%' }}
               />
             ) : (
               uploadButton
@@ -154,8 +159,8 @@ export default function AddProductItem() {
           </Upload>
           <Form.Item
             className={styles.formInput}
-            label='Product Id'
-            name='prodId'
+            label="Product Id"
+            name="prodId"
             value={itemInfo.prodId}
             onChange={handleFormFields}
             rules={[
@@ -164,12 +169,12 @@ export default function AddProductItem() {
               },
             ]}
           >
-            <Input placeholder='Enter Product Id' type='number' />
+            <Input placeholder="Enter Product Id" type="number" />
           </Form.Item>
           <Form.Item
             className={styles.formInput}
-            label='Product Name'
-            name='name'
+            label="Product Name"
+            name="name"
             value={itemInfo.itemName}
             onChange={handleFormFields}
             rules={[
@@ -178,12 +183,12 @@ export default function AddProductItem() {
               },
             ]}
           >
-            <Input placeholder='Enter Product Name' />
+            <Input placeholder="Enter Product Name" />
           </Form.Item>
           <Form.Item
             className={styles.formInput}
-            label='Price'
-            name='price'
+            label="Price"
+            name="price"
             value={itemInfo.price}
             onChange={handleFormFields}
             rules={[
@@ -192,12 +197,12 @@ export default function AddProductItem() {
               },
             ]}
           >
-            <Input type='Number' placeholder='Enter price per piece' />
+            <Input type="Number" placeholder="Enter price per piece" />
           </Form.Item>
           <Form.Item
             className={styles.formInput}
-            label='Stock'
-            name='stock'
+            label="Stock"
+            name="stock"
             value={itemInfo.stock}
             onChange={handleFormFields}
             rules={[
@@ -206,25 +211,25 @@ export default function AddProductItem() {
               },
             ]}
           >
-            <Input type='Number' placeholder='Enter total quantity' />
+            <Input type="Number" placeholder="Enter total quantity" />
           </Form.Item>
           <Form.Item>
             <div className={styles.formButtons}>
               <div>
                 <Button
                   loading={submitLoading}
-                  type='primary'
-                  htmlType='submit'
-                  className='normalBtn'
+                  type="primary"
+                  htmlType="submit"
+                  className="normalBtn"
                 >
                   Submit
                 </Button>
               </div>
               <div>
                 <Button
-                  htmlType='button'
+                  htmlType="button"
                   onClick={onReset}
-                  className='normalBtn'
+                  className="normalBtn"
                 >
                   Reset
                 </Button>

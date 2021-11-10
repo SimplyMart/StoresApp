@@ -124,6 +124,11 @@ export default function Profile() {
           listType="picture-card"
           showUploadList={false}
           beforeUpload={beforeUpload}
+          customRequest={({ file, onSuccess }) => {
+            setTimeout(() => {
+              onSuccess('ok');
+            }, 0);
+          }}
           onChange={handleUploadChange}
         >
           {uploadState.file ? (
